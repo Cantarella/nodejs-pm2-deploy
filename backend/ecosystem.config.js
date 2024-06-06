@@ -6,7 +6,7 @@ require('@dotenvx/dotenvx').config({
 const {
   DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, DEPLOY_PATH_ENVIRONMENTS, DEPLOY_REF = 'origin/master',
 } = process.env;
-console.log(DEPLOY_HOST, DEPLOY_PATH, DEPLOY_USER, DEPLOY_PATH_ENVIRONMENTS);
+console.log(DEPLOY_HOST, DEPLOY_PATH, DEPLOY_USER);
 module.exports = {
   apps: [{
     name: 'api-service',
@@ -20,7 +20,11 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
       path: DEPLOY_PATH,
-      'pre-deploy': `scp -C ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENVIRONMENTS}`,
+      'pre-deploy': `
+        scp -C ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENVIRONMENTS}
+        &&
+        scp -C ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENVIRONMENTS}
+      `,
       'post-deploy': 'npm i && npm run start',
     },
   },
