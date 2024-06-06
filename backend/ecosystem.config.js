@@ -16,6 +16,7 @@ module.exports = {
   deploy: {
     production: {
       user: DEPLOY_USER,
+      key: '~/.ssh/known_hosts',
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
