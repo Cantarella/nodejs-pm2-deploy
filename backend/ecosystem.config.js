@@ -6,7 +6,7 @@ require('@dotenvx/dotenvx').config({
 const {
   DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, DEPLOY_PATH_ENVIRONMENTS, DEPLOY_REF = 'origin/master',
 } = process.env;
-console.log(DEPLOY_HOST, DEPLOY_PATH, DEPLOY_USER);
+console.log(DEPLOY_HOST, DEPLOY_PATH, DEPLOY_USER, DEPLOY_PATH_ENVIRONMENTS);
 module.exports = {
   apps: [{
     name: 'api-service',
