@@ -21,9 +21,9 @@ module.exports = {
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
       path: DEPLOY_PATH,
       'pre-deploy': `
-        scp -C ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENVIRONMENTS}
+        scp -C ./.env.deploy ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENVIRONMENTS};
          &&
-        scp -C ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENVIRONMENTS}
+        scp -C ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH_ENVIRONMENTS};
       `,
       'post-deploy': 'npm i && npm run start',
     },
