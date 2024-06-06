@@ -10,7 +10,7 @@ console.log(DEPLOY_HOST, DEPLOY_PATH, DEPLOY_USER);
 module.exports = {
   apps: [{
     name: 'backend',
-    script: 'ts-node src/app.ts',
+    script: './dist/app.js',
   }],
 
   deploy: {
@@ -20,8 +20,8 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
       path: DEPLOY_PATH,
-      'pre-deploy': `scp -Cv ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
-      'post-deploy': `export PATH=$PATH:~/.nvm/versions/node/v21.7.3/bin/ && npm i && npm run start`,
+      'pre-deploy': `scp ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
+      'post-deploy': `whoami && cd web-plus-pm2-deploy/source/backend && npm i && npm run start`,
     },
   },
 };
