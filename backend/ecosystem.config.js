@@ -16,7 +16,6 @@ module.exports = {
   deploy: {
     production: {
       user: DEPLOY_USER,
-      key: 'ecdsa-sha2-nistp256 SHA256:cpk6kPQ+SK/5XBN8d1yKU+ciPIJmnRm1O61T52s7Aq8',
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
