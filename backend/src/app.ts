@@ -11,7 +11,7 @@ import routes from './routes';
 const { PORT = 3000 } = process.env;
 const app = express();
 mongoose.connect(DB_ADDRESS);
-
+console.log('1111111111111111111111111')
 const allowCors = (req: Request, res: Response, next: any) => {
   res.setHeader('Access-Control-Allow-Origin', 'http://cantarella.nomoredomainswork.ru');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
