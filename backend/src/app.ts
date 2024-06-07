@@ -1,6 +1,5 @@
 import 'dotenv/config';
-
-import express from 'express';
+import express, { Request, Response } from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import { errors } from 'celebrate';
@@ -13,6 +12,13 @@ const { PORT = 3000 } = process.env;
 const app = express();
 mongoose.connect(DB_ADDRESS);
 
+const allowCors = (req: Request, res: Response, next: any) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://cantarella.nomoredomainswork.ru');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  next();
+};
 // Только для локальных тестов. Не используйте это в продакшене
 // app.use(cors())
 app.use(express.json());
