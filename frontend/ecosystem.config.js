@@ -20,6 +20,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
       path: DEPLOY_PATH,
+      'pre-deploy': `scp -Cv ./build/* ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
       'post-deploy': `export PATH=$PATH:~/.nvm/versions/node/v20.10.0/bin/ && cd frontend && npm i && npm run build`,
     },
   },
