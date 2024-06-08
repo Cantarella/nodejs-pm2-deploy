@@ -16,7 +16,9 @@ mongoose.connect(DB_ADDRESS);
 app.use(cors({
   origin: [
     'http://cantarella.nomoredomainswork.ru',
-    'http://cantarella.nomoredomainswork.ru/'
+    'http://cantarella.nomoredomainswork.ru/',
+    'https://cantarella.nomoredomainswork.ru',
+    'https://cantarella.nomoredomainswork.ru/'
   ]
 }))
 
