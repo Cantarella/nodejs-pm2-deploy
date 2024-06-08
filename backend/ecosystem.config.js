@@ -20,8 +20,8 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
       path: DEPLOY_PATH,
-      'pre-deploy': `scp -C ./src/app.ts cantarella@158.160.149.134:/home/cantarella/web-plus-pm2-deploy/source/backend/src`,
-      'post-deploy': `cd web-plus-pm2-deploy/source/backend && npm i && npm run start`,
+      'pre-deploy-local': `scp -C ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
+      'post-deploy': `cd ../source/backend && export PATH=$PATH:~/.nvm/versions/node/v20.10.0/bin/ && npm i && npm run start`,
     },
   },
 };

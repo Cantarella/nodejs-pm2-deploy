@@ -4,7 +4,7 @@ require('@dotenvx/dotenvx').config({
 })
 
 const {
-  DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, DEPLOY_PATH_ENVIRONMENTS, DEPLOY_REF = 'origin/master',
+  DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, BUILD_PATH, DEPLOY_REF = 'origin/master',
 } = process.env;
 console.log(DEPLOY_HOST, DEPLOY_PATH, DEPLOY_USER);
 module.exports = {
@@ -20,8 +20,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
       path: DEPLOY_PATH,
-      'pre-deploy': `scp -Cv ./build/* ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
-      'post-deploy': `export PATH=$PATH:~/.nvm/versions/node/v20.10.0/bin/ && cd frontend && npm i && npm run build`,
+      'pre-deploy-local': `scp -Cr ./build/* ${DEPLOY_USER}@${DEPLOY_HOST}:${BUILD_PATH}`,
     },
   },
 };
