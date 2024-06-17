@@ -18,7 +18,7 @@ module.exports = {
       user: DEPLOY_USER,
       host: DEPLOY_HOST,
       ref: DEPLOY_REF,
-      repo: 'https://github.com/Cantarella/web-plus-pm2-deploy.git',
+      repo: 'https://github.com/Cantarella/nodejs-pm2-deploy.git',
       path: DEPLOY_PATH,
       'pre-deploy-local': `scp -C ./.env ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}`,
       'post-deploy': `cd ../source/backend && export PATH=$PATH:~/.nvm/versions/node/v20.10.0/bin/ && npm i && npm run start`,
